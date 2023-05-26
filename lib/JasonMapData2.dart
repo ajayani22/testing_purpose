@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-class demo1 extends StatefulWidget {
+class JsonData2 extends StatefulWidget {
   @override
-  State<demo1> createState() => _demo1State();
+  State<JsonData2> createState() => _JsonData2State();
 }
 
-class _demo1State extends State<demo1> {
-
-  List l = [
+class _JsonData2State extends State<JsonData2> {
+  List bigData = [
     {
       "name": "Afghanistan",
       "iso3": "AFG",
@@ -1292,287 +1291,26 @@ class _demo1State extends State<demo1> {
       ]
     }
   ];
-
-  bool status = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  Map numbers = {
+    '10': [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    '20': [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    '30': [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
+    '40': [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+    '50': [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+    '60': [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70]
+  };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('JasonData Map into Map')),
       body: ListView.builder(
-        shrinkWrap: true,
-        itemCount: l.length,
-        itemBuilder: (context, index) {
-          CData cData = CData.fromJson(l[index]);
-          return ExpansionTile(
-            maintainState: true,
-            controlAffinity: ListTileControlAffinity.trailing,
-            initiallyExpanded: status,
-            onExpansionChanged: (value) {
-              print(value);
-              setState(() {
-                status = false;
-              });
-            },
-            title: Text("${cData.name}"),
-            children: [
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: cData.states!.length,
-                itemBuilder: (context, index1) {
-                  return Text("${cData.states![index1].name}");
-                },
-              )
-            ],
-          );
-        },
+        itemCount: bigData.length,
+        itemBuilder: (context, index) => ListTile(
+            leading: CircleAvatar(
+          child: Text('${numbers[index][0]}'),
+        )),
       ),
     );
-  }
-}
-
-class CData {
-  String? name;
-  String? iso3;
-  String? iso2;
-  String? numericCode;
-  String? phoneCode;
-  String? capital;
-  String? currency;
-  String? currencyName;
-  String? currencySymbol;
-  String? tld;
-  String? native;
-  String? region;
-  String? subregion;
-  List<Timezones>? timezones;
-  Translations? translations;
-  String? latitude;
-  String? longitude;
-  String? emoji;
-  String? emojiU;
-  List<States>? states;
-
-  CData({this.name,
-    this.iso3,
-    this.iso2,
-    this.numericCode,
-    this.phoneCode,
-    this.capital,
-    this.currency,
-    this.currencyName,
-    this.currencySymbol,
-    this.tld,
-    this.native,
-    this.region,
-    this.subregion,
-    this.timezones,
-    this.translations,
-    this.latitude,
-    this.longitude,
-    this.emoji,
-    this.emojiU,
-    this.states});
-
-  CData.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    iso3 = json['iso3'];
-    iso2 = json['iso2'];
-    numericCode = json['numeric_code'];
-    phoneCode = json['phone_code'];
-    capital = json['capital'];
-    currency = json['currency'];
-    currencyName = json['currency_name'];
-    currencySymbol = json['currency_symbol'];
-    tld = json['tld'];
-    native = json['native'];
-    region = json['region'];
-    subregion = json['subregion'];
-    if (json['timezones'] != null) {
-      timezones = <Timezones>[];
-      json['timezones'].forEach((v) {
-        timezones!.add(new Timezones.fromJson(v));
-      });
-    }
-    translations = json['translations'] != null
-        ? new Translations.fromJson(json['translations'])
-        : null;
-    latitude = json['latitude'];
-    longitude = json['longitude'];
-    emoji = json['emoji'];
-    emojiU = json['emojiU'];
-    if (json['states'] != null) {
-      states = <States>[];
-      json['states'].forEach((v) {
-        states!.add(new States.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['iso3'] = this.iso3;
-    data['iso2'] = this.iso2;
-    data['numeric_code'] = this.numericCode;
-    data['phone_code'] = this.phoneCode;
-    data['capital'] = this.capital;
-    data['currency'] = this.currency;
-    data['currency_name'] = this.currencyName;
-    data['currency_symbol'] = this.currencySymbol;
-    data['tld'] = this.tld;
-    data['native'] = this.native;
-    data['region'] = this.region;
-    data['subregion'] = this.subregion;
-    if (this.timezones != null) {
-      data['timezones'] = this.timezones!.map((v) => v.toJson()).toList();
-    }
-    if (this.translations != null) {
-      data['translations'] = this.translations!.toJson();
-    }
-    data['latitude'] = this.latitude;
-    data['longitude'] = this.longitude;
-    data['emoji'] = this.emoji;
-    data['emojiU'] = this.emojiU;
-    if (this.states != null) {
-      data['states'] = this.states!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Timezones {
-  String? zoneName;
-  int? gmtOffset;
-  String? gmtOffsetName;
-  String? abbreviation;
-  String? tzName;
-
-  Timezones({this.zoneName,
-    this.gmtOffset,
-    this.gmtOffsetName,
-    this.abbreviation,
-    this.tzName});
-
-  Timezones.fromJson(Map<String, dynamic> json) {
-    zoneName = json['zoneName'];
-    gmtOffset = json['gmtOffset'];
-    gmtOffsetName = json['gmtOffsetName'];
-    abbreviation = json['abbreviation'];
-    tzName = json['tzName'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['zoneName'] = this.zoneName;
-    data['gmtOffset'] = this.gmtOffset;
-    data['gmtOffsetName'] = this.gmtOffsetName;
-    data['abbreviation'] = this.abbreviation;
-    data['tzName'] = this.tzName;
-    return data;
-  }
-}
-
-class Translations {
-  String? kr;
-  String? ptBR;
-  String? pt;
-  String? nl;
-  String? hr;
-  String? fa;
-  String? de;
-  String? es;
-  String? fr;
-  String? ja;
-  String? it;
-  String? cn;
-  String? tr;
-
-  Translations({this.kr,
-    this.ptBR,
-    this.pt,
-    this.nl,
-    this.hr,
-    this.fa,
-    this.de,
-    this.es,
-    this.fr,
-    this.ja,
-    this.it,
-    this.cn,
-    this.tr});
-
-  Translations.fromJson(Map<String, dynamic> json) {
-    kr = json['kr'];
-    ptBR = json['pt-BR'];
-    pt = json['pt'];
-    nl = json['nl'];
-    hr = json['hr'];
-    fa = json['fa'];
-    de = json['de'];
-    es = json['es'];
-    fr = json['fr'];
-    ja = json['ja'];
-    it = json['it'];
-    cn = json['cn'];
-    tr = json['tr'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['kr'] = this.kr;
-    data['pt-BR'] = this.ptBR;
-    data['pt'] = this.pt;
-    data['nl'] = this.nl;
-    data['hr'] = this.hr;
-    data['fa'] = this.fa;
-    data['de'] = this.de;
-    data['es'] = this.es;
-    data['fr'] = this.fr;
-    data['ja'] = this.ja;
-    data['it'] = this.it;
-    data['cn'] = this.cn;
-    data['tr'] = this.tr;
-    return data;
-  }
-}
-
-class States {
-  int? id;
-  String? name;
-  String? stateCode;
-  String? latitude;
-  String? longitude;
-  Null? type;
-
-  States({this.id,
-    this.name,
-    this.stateCode,
-    this.latitude,
-    this.longitude,
-    this.type});
-
-  States.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    stateCode = json['state_code'];
-    latitude = json['latitude'];
-    longitude = json['longitude'];
-    type = json['type'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['state_code'] = this.stateCode;
-    data['latitude'] = this.latitude;
-    data['longitude'] = this.longitude;
-    data['type'] = this.type;
-    return data;
   }
 }

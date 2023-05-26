@@ -1298,7 +1298,7 @@ class _demo2State extends State<demo2> {
     "price": 100,
     "office": true,
     "home": false,
-    "product": {"type": "Electrotics", "color": "Blue", "weight": 1.04},
+    "product": {"type": "Electronics", "color": "Blue", "weight": 1.04},
     "address": [101233, 132332]
   };
 
