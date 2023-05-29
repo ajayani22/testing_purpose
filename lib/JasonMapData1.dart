@@ -34,7 +34,7 @@ class _JasonData1State extends State<JasonData1> {
       ),
       body: Container(
         alignment: Alignment.center,
-        child: Text('${united.capital}'),
+        child: Text('${united.name}'),
       ),
     );
   }

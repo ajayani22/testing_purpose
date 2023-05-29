@@ -6,7 +6,6 @@ class demo1 extends StatefulWidget {
 }
 
 class _demo1State extends State<demo1> {
-
   List l = [
     {
       "name": "Afghanistan",
@@ -1357,26 +1356,27 @@ class CData {
   String? emojiU;
   List<States>? states;
 
-  CData({this.name,
-    this.iso3,
-    this.iso2,
-    this.numericCode,
-    this.phoneCode,
-    this.capital,
-    this.currency,
-    this.currencyName,
-    this.currencySymbol,
-    this.tld,
-    this.native,
-    this.region,
-    this.subregion,
-    this.timezones,
-    this.translations,
-    this.latitude,
-    this.longitude,
-    this.emoji,
-    this.emojiU,
-    this.states});
+  CData(
+      {this.name,
+      this.iso3,
+      this.iso2,
+      this.numericCode,
+      this.phoneCode,
+      this.capital,
+      this.currency,
+      this.currencyName,
+      this.currencySymbol,
+      this.tld,
+      this.native,
+      this.region,
+      this.subregion,
+      this.timezones,
+      this.translations,
+      this.latitude,
+      this.longitude,
+      this.emoji,
+      this.emojiU,
+      this.states});
 
   CData.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -1452,11 +1452,12 @@ class Timezones {
   String? abbreviation;
   String? tzName;
 
-  Timezones({this.zoneName,
-    this.gmtOffset,
-    this.gmtOffsetName,
-    this.abbreviation,
-    this.tzName});
+  Timezones(
+      {this.zoneName,
+      this.gmtOffset,
+      this.gmtOffsetName,
+      this.abbreviation,
+      this.tzName});
 
   Timezones.fromJson(Map<String, dynamic> json) {
     zoneName = json['zoneName'];
@@ -1492,19 +1493,20 @@ class Translations {
   String? cn;
   String? tr;
 
-  Translations({this.kr,
-    this.ptBR,
-    this.pt,
-    this.nl,
-    this.hr,
-    this.fa,
-    this.de,
-    this.es,
-    this.fr,
-    this.ja,
-    this.it,
-    this.cn,
-    this.tr});
+  Translations(
+      {this.kr,
+      this.ptBR,
+      this.pt,
+      this.nl,
+      this.hr,
+      this.fa,
+      this.de,
+      this.es,
+      this.fr,
+      this.ja,
+      this.it,
+      this.cn,
+      this.tr});
 
   Translations.fromJson(Map<String, dynamic> json) {
     kr = json['kr'];
@@ -1549,12 +1551,13 @@ class States {
   String? longitude;
   Null? type;
 
-  States({this.id,
-    this.name,
-    this.stateCode,
-    this.latitude,
-    this.longitude,
-    this.type});
+  States(
+      {this.id,
+      this.name,
+      this.stateCode,
+      this.latitude,
+      this.longitude,
+      this.type});
 
   States.fromJson(Map<String, dynamic> json) {
     id = json['id'];

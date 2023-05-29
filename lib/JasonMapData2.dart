@@ -1291,25 +1291,81 @@ class _JsonData2State extends State<JsonData2> {
       ]
     }
   ];
-  Map numbers = {
-    '10': [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-    '20': [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
-    '30': [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
-    '40': [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
-    '50': [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
-    '60': [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70]
-  };
+  List numbers = [
+    {
+      'default': 10,
+      '1st': 11,
+      '2nd': 12,
+      '3rd': 13,
+      '4th': 14,
+      '5th': 15,
+      '6th': 16,
+      '7th': 17,
+      '8th': 18,
+      '9th': 19
+    },
+    {
+      'default': 20,
+      '1st': 21,
+      '2nd': 22,
+      '3rd': 23,
+      '4th': 24,
+      '5th': 25,
+      '6th': 26,
+      '7th': 27,
+      '8th': 28,
+      '9th': 29
+    },
+    {
+      'default': 30,
+      '1st': 31,
+      '2nd': 32,
+      '3rd': 33,
+      '4th': 34,
+      '5th': 35,
+      '6th': 36,
+      '7th': 37,
+      '8th': 38,
+      '9th': 39
+    },
+    {
+      'default': 40,
+      '1st': 41,
+      '2nd': 42,
+      '3rd': 43,
+      '4th': 44,
+      '5th': 45,
+      '6th': 46,
+      '7th': 47,
+      '8th': 48,
+      '9th': 49
+    },
+    {
+      'default': 50,
+      '1st': 51,
+      '2nd': 52,
+      '3rd': 53,
+      '4th': 54,
+      '5th': 55,
+      '6th': 56,
+      '7th': 57,
+      '8th': 58,
+      '9th': 59
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('JasonData Map into Map')),
       body: ListView.builder(
-        itemCount: bigData.length,
-        itemBuilder: (context, index) => ListTile(
-            leading: CircleAvatar(
-          child: Text('${numbers[index][0]}'),
-        )),
+        itemCount: numbers.length,
+        itemBuilder: (context, index) => ExpansionTile(
+          leading: CircleAvatar(
+            child: Text('${numbers[index]['default']}'),
+          ),
+          title: Text('List for ${numbers[index]['default']}'),
+        ),
       ),
     );
   }
